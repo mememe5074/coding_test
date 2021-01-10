@@ -18,18 +18,18 @@ N = int(input())
 height_list = list(map(int, input().split()))
 
 def solve(left, right):
-    #기저 사례: 판자가 하나일 경우
+    # 기저 사례: 판자가 하나일 경우
     if left == right: return height_list[left]
     mid = int((left+right)/2)
-    #분할하여 각개격파한다.
+    # 분할하여 각개격파한다.
     ret = max(solve(left, mid), solve(mid+1, right))
     
-    #두 부분에 걸치는 사각형 중 가장 큰 것을 찾는다.
+    # 두 부분에 걸치는 사각형 중 가장 큰 것을 찾는다.
     lo = mid
     hi = mid+1
     height = min(height_list[lo], height_list[hi])
     ret = max(ret, height*2)
-
+    # 사각형이 입력 전체를 덮을 때까지 확장한다.
     while (hi < right) or (left < lo):
         # 항상 더 높이가 높은 쪽으로 확장한다.
         # hi가 오른쪽 끝에 도달하지 못하였고, lo가 왼쪽끝에 닿거나 lo-1번째 높이보다 hi+1의 높이가 크다면

@@ -40,10 +40,10 @@ for _ in range(N):
     MAP.append(list(map(int, input().split())))
     
 def move_dr(now, cnt, p):
+    
     #d일 까지 돌았을 경우
     if D == cnt:
         cache[now] += p
-        print(cache)
         return 
     for i in range(N):
         #길이 있다면
@@ -52,6 +52,7 @@ def move_dr(now, cnt, p):
             move_dr(i,cnt+1, p)
             p *= (MAP[now].count(1))
         
-    print(cache)
-
-move_dr(P, 0, 1)
+    return cache
+empty_list=[]
+empty_list.append(move_dr(P, 0, 1))
+print(empty_list[-1])

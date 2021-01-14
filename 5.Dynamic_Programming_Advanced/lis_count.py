@@ -28,4 +28,5 @@ def lis(now, start):
     return
 lis([-1], 0)
 new_list.sort(key=len, reverse=True)
+
 print(new_list)
